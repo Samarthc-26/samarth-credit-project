@@ -1,17 +1,17 @@
 import streamlit as st
-from prediction_helper import predict  # Ensure this is correctly linked to your prediction_helper.py
+from prediction_helper import predict
 
-# Set the page configuration and title
+
 st.set_page_config(page_title="Samarth Finance: Credit Risk Modelling", page_icon="📊")
 st.title("Credit Risk Modelling")
 
-# Create rows of three columns each
+
 row1 = st.columns(3)
 row2 = st.columns(3)
 row3 = st.columns(3)
 row4 = st.columns(3)
 
-# Assign inputs to the first row with default values
+
 with row1[0]:
     age = st.number_input('Age', min_value=18, step=1, max_value=100, value=28)
 with row1[1]:
@@ -49,10 +49,6 @@ with row4[2]:
 
 # Button to calculate risk
 if st.button('Calculate Risk'):
-    # Call the predict function from the helper module
-    # print((age, income, loan_amount, loan_tenure_months, avg_dpd_per_delinquency,
-    #                                             delinquency_ratio, credit_utilization_ratio, num_open_accounts,
-    #                                             residence_type, loan_purpose, loan_type))
     probability, credit_score, rating = predict(age, income, loan_amount, loan_tenure_months, avg_dpd_per_delinquency,
                                                 delinquency_ratio, credit_utilization_ratio, num_open_accounts,
                                                 residence_type, loan_purpose, loan_type)
